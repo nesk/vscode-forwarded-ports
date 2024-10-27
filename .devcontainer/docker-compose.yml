@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - 8025:8025
+
+  redisinsight:
+    image: redis/redisinsight
+    ports:
+      - 5540:5540
+
+volumes:
+  mongodb-data:
